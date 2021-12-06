@@ -10,7 +10,7 @@ namespace Exercise_2
             int userChoice;
             do
             {
-                Console.Clear();
+                Console.Clear();// To get a clean console and reduce the "messyness"
                 Console.WriteLine(""); //Empty Lines to create space
                 Console.WriteLine("");
                 Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -118,6 +118,7 @@ namespace Exercise_2
             }
             if(userchoice == 1)
             {
+                //To prevent the main menu to show before the user is ready for it.
                 Console.WriteLine("\nPress Enter to exit");
                 Console.ReadLine();
             }
@@ -263,5 +264,4 @@ namespace Exercise_2
         }
     }
 }
-//Jag tyckte denna övning var bra och rolig att göra. Möjligen att det blir lite kontraproduktivt att säga åt oss att skriva all kod i
-//Programklassen när Dimitris nyss har suttit och sagt att man i vanlig fall inte ska skriva kod där :).
+//Jag tyckte denna övning var bra och rolig att göra.
