@@ -16,8 +16,6 @@ namespace Exercise_3
         private int age;
         private string fName;
         private string lName;
-        private double height;
-        private double weight;
 
         public int Age
         {
@@ -29,25 +27,21 @@ namespace Exercise_3
             get { return fName; } 
             set 
             {
-                
-                if(value.Length <= 2 && value.Length >= 10)
-                {
-                    fName = value;
-                }
+
+                if (value.Length !<= 2 && value.Length !>= 10)
+                    throw new ArgumentException($"The first name needs to be between 2 and 10 caracters long");
                 else
-                {
-                    
-                }
+                    fName = value;
             }
         }
         public string LName {
             get { return lName; }
             set 
             {
-                if (lName.Length <= 3 && lName.Length >= 15)
-                {
+                if (lName.Length !<= 3 && lName.Length !>= 15)
+                    throw new ArgumentException($"The first name needs to be between 3 and 15 characters long");
+                else
                     lName = value;
-                }
             }
         }
         public double Height { get; set; }

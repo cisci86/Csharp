@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Exercise_3
 {
-    internal class Wolf
+    internal class Wolf : Animal
     {
+        public Wolf(string name, double weight, int age) : base(name, weight, age)
+        {
+        }
+        public int PackSize { get; set; }
+        public override void DoSound()
+        {
+            Console.WriteLine("Aoooowwwwww");
+        }
     }
 }
