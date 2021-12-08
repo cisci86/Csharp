@@ -28,20 +28,21 @@ namespace Exercise_3
             set 
             {
 
-                if (value.Length !<= 2 && value.Length !>= 10)
-                    throw new ArgumentException($"The first name needs to be between 2 and 10 caracters long");
-                else
+                if (value.Length >= 2 && value.Length <= 10)
                     fName = value;
+                else
+                    throw new ArgumentException($"The first name needs to be between 2 and 10 caracters long");
+
             }
         }
         public string LName {
             get { return lName; }
             set 
             {
-                if (lName.Length !<= 3 && lName.Length !>= 15)
-                    throw new ArgumentException($"The first name needs to be between 3 and 15 characters long");
-                else
+                if (value.Length >= 3 && value.Length <= 15)
                     lName = value;
+                else
+                    throw new ArgumentException($"The last name needs to be between 3 and 15 characters long");
             }
         }
         public double Height { get; set; }

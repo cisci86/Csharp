@@ -14,18 +14,19 @@ namespace Exercise_3
         }
         public Person CreatePerson(int age, string fName, string lName, double height, double weight)
         {
-            try
-            {
-                Person person = new Person(fName, lName);
-            }
-            catch (Exception ex1)
-            {
-                Console.WriteLine(ex1.Message);
-            }
-
+            Person person = new Person(fName, lName);
             person.Height = height;
+            person.Weight = weight;
             SetAge(person, age);
             return person;
+        }
+        public int GetAge(Person person)
+        {
+            return person.Age;
+        }
+        public string GetFullName(Person person)
+        {
+            return $"{person.FName} {person.LName}";
         }
     }
 }

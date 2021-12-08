@@ -18,3 +18,5 @@ namespace Exercise_3
         public abstract void DoSound();
     }
 }
+//F: Då bör vi lägga attributet i Bird klassen
+//F: Då skulle man lägga det här i Animal klassen

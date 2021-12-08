@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Exercise_3.Animals
 {
-    internal class Pelican
+    internal class Pelican : Bird
     {
+        public Pelican(string name, double weight, int age) : base(name, weight, age)
+        {
+        }
+        public double BeakSize { get; set; }
     }
 }

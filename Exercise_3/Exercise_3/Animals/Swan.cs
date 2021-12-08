@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Exercise_3.Animals
 {
-    internal class Swan
+    internal class Swan : Bird
     {
+        public Swan(string name, double weight, int age) : base(name, weight, age)
+        {
+        }
+        public string BeakColor { get; set; }
     }
 }
