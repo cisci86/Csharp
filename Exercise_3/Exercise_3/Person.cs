@@ -31,7 +31,7 @@ namespace Exercise_3
                 if (value.Length >= 2 && value.Length <= 10)
                     fName = value;
                 else
-                    throw new ArgumentException($"The first name needs to be between 2 and 10 caracters long");
+                    throw new ArgumentException($"The first name needs to be between 2 and 10 characters long");
 
             }
         }

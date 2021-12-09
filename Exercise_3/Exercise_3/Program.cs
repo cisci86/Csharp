@@ -2,10 +2,13 @@
 using Exercise_3;
 using Exercise_3.Animals;
 
+//3.1 Inkapsling
+
 //var Lasse = new Person();
 //Lasse.Age = 30;
 
 PersonHandler pHandler = new PersonHandler();
+
 //To catch the exception that might be cast in the Person class.
 try
 {
@@ -40,13 +43,17 @@ catch (ArgumentException ex)
     Console.WriteLine(ex.Message);
 }
 
+//3.2 Arv
+
 var animalList = new List<Animal>();
+
 animalList.Add(new Horse("Bilbo", 800, 8, 23));
 animalList.Add(new Swan("Ove", 1.5, 2, 150, "Red"));
 animalList.Add(new Worm("Nisse", 0.023, 1, 15));
 animalList.Add(new Hedgehog("Hedda", 0.8, 3, "Snails"));
 animalList.Add(new Wolfman("Lasse", 80, 26, 1));
 animalList.Add(new Dog("Shiva", 32, 11, "White swiss Shepard"));
+
 foreach (var item in animalList)
 {
     Console.WriteLine(item.GetType().Name);
@@ -59,7 +66,9 @@ foreach (var item in animalList)
 }
 
 var dogsList = new List<Dog>();
+
 //dogsList.Add(new Horse("Stisse", 750, 7, 18));
+
 //F: För att listan bara kan innehålla objekt av typen hund och häst är inte av typen hund.
 //F: Nu antar jag att ni menar alla djur och inte även Person, då behöver listan vara av typen Animal.
 //Lägga till även Person i samma lista är vad jag vet inte möjligt just nu då Person och Animal inte är länkade på något sätt.
@@ -69,6 +78,7 @@ foreach (var item in animalList)
     Console.WriteLine(item.Stats());
 }
 //F: Den printar den mest specialicerade metoden för varje klass, därför printar den olika saker för alla typer av djur.
+
 foreach (var item in animalList) //Only prints the Stats method if the animal is a Dog.
 {
     if(item is Dog)
@@ -82,7 +92,10 @@ foreach (var item in animalList) //Only prints the Stats method if the animal is
 //F: Det funkar inte då Animals inte kommer år methoder som bara ligger i Dog klassen.
 //Vi kommer bara åt det som ligger i Anmila klassen när objektet ligger i en Animal "behållare".
 
+//3.3 Polymorfism
+
 var userErrorList = new List<UserError>();
+
 userErrorList.Add(new NumericInputError());
 userErrorList.Add(new NumericInputError());
 userErrorList.Add(new TextInputError());
@@ -90,8 +103,9 @@ userErrorList.Add(new TextInputError());
 userErrorList.Add(new EmptyFieldError());
 userErrorList.Add(new EmptyIntError());
 userErrorList.Add(new EmptyStringError());
+
 foreach (var item in userErrorList)
 {
     Console.WriteLine(item.UEMessage());
 }
-//Sorry för dålig variation på error klasser men kom int epå något bra.
+//Sorry för dålig variation på error klasser men kom inte på något bra.

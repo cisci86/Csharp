@@ -8,11 +8,11 @@ namespace Exercise_3
 {
     internal class Hedgehog : Animal
     {
-        public Hedgehog(string name, double weight, int age, string favouritFood) : base(name, weight, age)
+        public Hedgehog(string name, double weight, int age, string favoritFood) : base(name, weight, age)
         {
-            FavouritFoods = favouritFood;
+            FavoritFoods = favoritFood;
         }
-        public string FavouritFoods { get; set; }
+        public string FavoritFoods { get; set; }
 
         public override void DoSound()
         {
@@ -20,7 +20,7 @@ namespace Exercise_3
         }
         public override string Stats()
         {
-            return base.Stats() + $", Favourite Food: {FavouritFoods}";
+            return base.Stats() + $", Favorite Food: {FavoritFoods}";
         }
     }
 }
