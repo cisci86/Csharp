@@ -8,8 +8,9 @@ namespace Exercise_3.Animals
 {
     internal class Swan : Bird
     {
-        public Swan(string name, double weight, int age) : base(name, weight, age)
+        public Swan(string name, double weight, int age, double wingSpan, string beakColor) : base(name, weight, age, wingSpan)
         {
+            BeakColor = beakColor;
         }
         public string BeakColor { get; set; }
         public override string Stats()

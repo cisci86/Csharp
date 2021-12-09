@@ -8,7 +8,7 @@ namespace Exercise_3
 {
     internal class Dog : Animal
     {
-        public Dog(string name, double weight, int age) : base(name, weight, age)
+        public Dog(string name, double weight, int age, string race) : base(name, weight, age)
         {
         }
         public string Race { get; set; }

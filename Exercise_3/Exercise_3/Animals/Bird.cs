@@ -8,8 +8,9 @@ namespace Exercise_3
 {
     internal class Bird : Animal
     {
-        public Bird(string name, double weight, int age) : base(name, weight, age)
+        public Bird(string name, double weight, int age, double wingSpan) : base(name, weight, age)
         {
+            WingSpan = wingSpan;
         }
         public double WingSpan { get; set; }
 

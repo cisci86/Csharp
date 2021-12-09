@@ -8,8 +8,9 @@ namespace Exercise_3
 {
     internal class Hedgehog : Animal
     {
-        public Hedgehog(string name, double weight, int age) : base(name, weight, age)
+        public Hedgehog(string name, double weight, int age, string favouritFood) : base(name, weight, age)
         {
+            FavouritFoods = favouritFood;
         }
         public string FavouritFoods { get; set; }
 

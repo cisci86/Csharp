@@ -8,8 +8,9 @@ namespace Exercise_3
 {
     internal class Worm : Animal
     {
-        public Worm(string name, double weight, int age) : base(name, weight, age)
+        public Worm(string name, double weight, int age, double length) : base(name, weight, age)
         {
+            Length = length;
         }
         public double Length { get; set; }
         public override void DoSound()

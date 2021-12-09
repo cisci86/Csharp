@@ -8,8 +8,9 @@ namespace Exercise_3
 {
     internal class Wolf : Animal
     {
-        public Wolf(string name, double weight, int age) : base(name, weight, age)
+        public Wolf(string name, double weight, int age, int packSize) : base(name, weight, age)
         {
+            PackSize = packSize;
         }
         public int PackSize { get; set; }
         public override void DoSound()
