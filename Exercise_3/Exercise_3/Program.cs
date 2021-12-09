@@ -81,3 +81,17 @@ foreach (var item in animalList) //Only prints the Stats method if the animal is
 }
 //F: Det funkar inte då Animals inte kommer år methoder som bara ligger i Dog klassen.
 //Vi kommer bara åt det som ligger i Anmila klassen när objektet ligger i en Animal "behållare".
+
+var userErrorList = new List<UserError>();
+userErrorList.Add(new NumericInputError());
+userErrorList.Add(new NumericInputError());
+userErrorList.Add(new TextInputError());
+userErrorList.Add(new TextInputError());
+userErrorList.Add(new EmptyFieldError());
+userErrorList.Add(new EmptyIntError());
+userErrorList.Add(new EmptyStringError());
+foreach (var item in userErrorList)
+{
+    Console.WriteLine(item.UEMessage());
+}
+//Sorry för dålig variation på error klasser men kom int epå något bra.
