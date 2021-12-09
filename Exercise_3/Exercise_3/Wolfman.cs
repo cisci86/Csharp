@@ -8,7 +8,7 @@ namespace Exercise_3
 {
     internal class Wolfman : Wolf, IPerson
     {
-        public Wolfman(string name, double weight, int age) : base(name, weight, age)
+        public Wolfman(string name, double weight, int age, int packSize) : base(name, weight, age, packSize)
         {
         }
 

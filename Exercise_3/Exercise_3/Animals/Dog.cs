@@ -10,6 +10,7 @@ namespace Exercise_3
     {
         public Dog(string name, double weight, int age, string race) : base(name, weight, age)
         {
+            Race = race;
         }
         public string Race { get; set; }
 
@@ -21,5 +22,7 @@ namespace Exercise_3
         {
             return base.Stats() + $", Race:{Race}";
         }
+        public string ReturnString() => "This is a dog!";
+       
     }
 }
