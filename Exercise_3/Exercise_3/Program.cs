@@ -39,3 +39,7 @@ catch (ArgumentException ex)
     Console.WriteLine(ex.Message);
 }
 
+Bird test = new Bird("Kalle", 0.5, 2);
+test.WingSpan = 0.8;
+Console.WriteLine(test.Stats());
+

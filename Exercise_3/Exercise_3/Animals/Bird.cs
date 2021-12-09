@@ -17,6 +17,10 @@ namespace Exercise_3
         {
             Console.WriteLine("pipip"); ;
         }
+        public override string Stats()
+        {
+            return base.Stats() + $", WingSpan: {WingSpan}m";
+        }
 
     }
 }

@@ -12,5 +12,9 @@ namespace Exercise_3.Animals
         {
         }
         public double BeakSize { get; set; }
+        public override string Stats()
+        {
+            return base.Stats() + $", Beak Size: {BeakSize}cm";
+        }
     }
 }

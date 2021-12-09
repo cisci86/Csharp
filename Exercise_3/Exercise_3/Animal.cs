@@ -10,12 +10,18 @@ namespace Exercise_3
     {
         public Animal(string name, double weight, int age)
         {
-
+            Name = name;
+            Weight = weight;
+            Age = age;
         }
         public string Name { get; set; }
         public double Weight { get; set; }
         public int Age { get; set; }
         public abstract void DoSound();
+        public virtual string Stats()
+        {
+            return $"Name: {Name}, Weight:{Weight}kg, Age:{Age} years";
+        }
     }
 }
 //F: Då bör vi lägga attributet i Bird klassen

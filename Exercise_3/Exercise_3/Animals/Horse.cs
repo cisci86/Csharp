@@ -16,5 +16,9 @@ namespace Exercise_3
         {
             Console.WriteLine("Eeehhhhiii");
         }
+        public override string Stats()
+        {
+            return base.Stats() + $", Hoff Size: {HoofSize}";
+        }
     }
 }

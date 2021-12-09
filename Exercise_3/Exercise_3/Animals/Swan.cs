@@ -12,5 +12,9 @@ namespace Exercise_3.Animals
         {
         }
         public string BeakColor { get; set; }
+        public override string Stats()
+        {
+            return base.Stats() + $", Beak Color: {BeakColor}";
+        }
     }
 }

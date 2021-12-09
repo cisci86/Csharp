@@ -16,5 +16,9 @@ namespace Exercise_3
         {
             Console.WriteLine("Aoooowwwwww");
         }
+        public override string Stats()
+        {
+            return base.Stats() + $", Pack size: {PackSize}";
+        }
     }
 }

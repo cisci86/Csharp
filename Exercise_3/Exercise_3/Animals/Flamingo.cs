@@ -12,5 +12,9 @@ namespace Exercise_3.Animals
         {
         }
         public double AmountShrimpEaten { get; set; }
+        public override string Stats()
+        {
+            return base.Stats() + $", Amount Shrimps Eaten: {AmountShrimpEaten}kg";
+        }
     }
 }

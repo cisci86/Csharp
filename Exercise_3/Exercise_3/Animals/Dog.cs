@@ -17,5 +17,9 @@ namespace Exercise_3
         {
             Console.WriteLine("Woff");
         }
+        public override string Stats()
+        {
+            return base.Stats() + $", Race:{Race}";
+        }
     }
 }

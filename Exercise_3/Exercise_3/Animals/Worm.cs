@@ -16,5 +16,9 @@ namespace Exercise_3
         {
             Console.WriteLine(".............");
         }
+        public override string Stats()
+        {
+            return base.Stats() + $", Length: {Length}cm";
+        }
     }
 }

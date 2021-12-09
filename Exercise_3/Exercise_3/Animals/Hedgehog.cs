@@ -17,5 +17,9 @@ namespace Exercise_3
         {
             Console.WriteLine("shheeeww");
         }
+        public override string Stats()
+        {
+            return base.Stats() + $", Favourite Food: {FavouritFoods}";
+        }
     }
 }
