@@ -36,7 +36,7 @@ try
     //Testing the Try/Catch part.
 {
     var lotta = pHandler.CreatePerson(38, "Lisa", "P", 171, 74);
-    Console.WriteLine($"Name: {lotta.FName} {lotta.LName}, age: {lotta.Age}years");
+    Console.WriteLine($"Name: {lotta.FName} {lotta.LName}, age: {lotta.Age}years"); //Jag vet att detta inte kommer printas, men det blev så tomt utan. 
 }
 catch (ArgumentException ex)
 {
