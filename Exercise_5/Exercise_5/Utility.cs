@@ -8,9 +8,11 @@ namespace Exercise_5
 {
     static class Utility
     {
-        public static bool VerifyIntInput()
+        public static int VerifyIntInput(string input)
         {
-            return true;
+            if(string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+                return -1;
+            return int.TryParse(input, out int outPut) ? outPut : -1;
         }
     }
 }

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Exercise_5
 {
-    internal class Manager
+    public class Manager
     {
+        public Manager()
+        {
+            UI uI = new UI();
+            ;
+        }
     }
 }
