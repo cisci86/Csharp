@@ -8,5 +8,16 @@ namespace Exercise_5
 {
     internal class UI
     {
+        public void MenuStart()
+        {
+            do
+            {
+                Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                Console.WriteLine("\tWELCOME TO YOUR GARGE");
+                Console.WriteLine("Use the menu to navigate");
+                Console.WriteLine("* 1: Create a new Garage");
+                Console.WriteLine("* 0: Exit the program:");
+            } while (userChoice != 0);
+        }
     }
 }
