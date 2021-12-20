@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Exercise_5.Vehicles
 {
-    internal class Motorcycle
+    internal class Motorcycle : Vehicle
     {
+        public int CylinderVolume { get; set; }
     }
 }

@@ -8,5 +8,6 @@ namespace Exercise_5.Vehicles
 {
     internal class Bus
     {
+        public int NumberOfSeats { get; set; }
     }
 }

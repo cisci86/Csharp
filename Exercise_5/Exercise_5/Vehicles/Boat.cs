@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Exercise_5.Vehicles
 {
-    internal class Boat
+    internal class Boat : Vehicle
     {
+        public int Lenght { get; set; }
     }
 }

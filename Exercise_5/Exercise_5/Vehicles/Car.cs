@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Exercise_5.Vehicles
 {
-    internal class Car
+    internal class Car : Vehicle
     {
+        public string Fueltype { get; set; }
     }
 }
