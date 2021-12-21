@@ -8,44 +8,30 @@ namespace Exercise_5
 {
     public class UI
     {
-        public int Menustart()
+        public void PrintStartMenu()
         {
-            int userChoice;
-            do
-            {
                 Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                 Console.WriteLine("\tWELCOME TO YOUR GARGE");
                 Console.WriteLine("Use the menu to navigate");
                 Console.WriteLine("* 1: Create a new Garage");
                 Console.WriteLine("* 0: Exit the program\n");
                 Console.WriteLine("Enter your choice:");
-                userChoice = Utility.VerifyIntInput(Console.ReadLine()!);
-            } while (userChoice != 0);
-
-            switch (userChoice)
+        }
+        public int GetUserChoice(string message = "Please enter a valid value!")
+        {
+            int userChoice;
+            do
             {
-                case 1:
-                    GarageHandler garageHandler = new GarageHandler();
-                    int parkinSlots;
-                    do
-                    {
-                        Console.WriteLine("How many parking slots should the garage have?");
-                        parkinSlots = Utility.VerifyIntInput(Console.ReadLine()!);
-                        if (parkinSlots < 0)
-                            Console.WriteLine("Please enter a value bigger than 0");
-                    } while (parkinSlots < 0);
-                    garageHandler.Run(parkinSlots);
-                    break;
-                case 0:
-                    Environment.Exit(0);
-                    break;
-                case -1:
-                    Console.WriteLine("Please enter a valid option!");
-                    break;
-                default:
-                    Console.WriteLine("Please enter a valid option!");
-                    break;
-            }
+                userChoice = Utility.VerifyIntInput(Console.ReadLine()!);
+                if(userChoice < 0)
+                    Console.WriteLine(message);
+
+            } while (userChoice < 0);
+            return userChoice;
+        }
+        public void PrintMessage(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }
