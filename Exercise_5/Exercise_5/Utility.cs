@@ -14,5 +14,12 @@ namespace Exercise_5
                 return -1;
             return int.TryParse(input, out int outPut) ? outPut : -1;
         }
+
+        internal static string VerifyStringInput(string input)
+        {
+            if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
+                return null;
+            return input;
+        }
     }
 }

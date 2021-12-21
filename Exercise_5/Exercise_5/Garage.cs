@@ -9,6 +9,10 @@ namespace Exercise_5
             garageInventory = new T[capacity];
         }
         private T[] garageInventory;
+        public void AddVehicle(T item)
+        {
+            garageInventory[0] = item;
+        }
         public IEnumerator<T> GetEnumerator()
         {
             foreach (var item in garageInventory)
