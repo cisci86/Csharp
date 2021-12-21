@@ -8,10 +8,14 @@ namespace Exercise_5
 {
     internal class GarageHandler
     {
+        private Garage<Vehicle> garage;
         internal void Run(int garageCapacity)
         {
-            Garage<Vehicle> garage = new Garage<Vehicle>(garageCapacity);
+            garage = new Garage<Vehicle>(garageCapacity);
         }
-        
+        internal void AddVehicle()
+        {
+            
+        }
     }
 }

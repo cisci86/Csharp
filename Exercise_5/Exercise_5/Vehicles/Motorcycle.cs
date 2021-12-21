@@ -8,6 +8,11 @@ namespace Exercise_5.Vehicles
 {
     internal class Motorcycle : Vehicle
     {
+        public Motorcycle(string regNumber, string color, int numberOfWheels, int cylinderVolume) : base(regNumber, color, numberOfWheels)
+        {
+            CylinderVolume = cylinderVolume;
+        }
+
         public int CylinderVolume { get; set; }
     }
 }

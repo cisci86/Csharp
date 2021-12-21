@@ -39,6 +39,7 @@ namespace Exercise_5
                         if (parkingSlots <= 0)
                             uI.PrintMessage("Please enter a value bigger then 0");
                     } while (parkingSlots <= 0);
+                    garageHandler.Run(parkingSlots);
                     break;
                 case 0:
                     Environment.Exit(0);

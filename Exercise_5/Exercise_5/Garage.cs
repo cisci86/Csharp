@@ -6,17 +6,18 @@ namespace Exercise_5
     {
         public Garage(int capacity)
         {
-            garageInventory = new Vehicle[capacity];
+            garageInventory = new T[capacity];
         }
-        private Vehicle[] garageInventory;
+        private T[] garageInventory;
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            foreach (var item in garageInventory)
+            {
+                yield return item;
+            }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
     }
 }
