@@ -9,9 +9,36 @@ namespace Exercise_5
             garageInventory = new T[capacity];
         }
         private T[] garageInventory;
-        public void AddVehicle(T item)
+        public bool AddVehicle(T item)
         {
-            garageInventory[0] = item;
+            bool addedToSlot = false;
+            for (int i = 0; i < garageInventory.Length; i++)
+            {
+                if (garageInventory[i] == null)
+                {
+                    garageInventory[i] = item;
+                    addedToSlot = true;
+                    break;
+                }
+            }
+            return addedToSlot;
+        }
+        public bool IsFull()
+        {
+            bool isFull = true;
+            for (int i = 0; i < garageInventory.Length; i++)
+            {
+                if(garageInventory[i] == null)
+                {
+                    isFull = false;
+                }
+            }
+            return isFull;
+        }
+        public void Search()
+        {
+            var q = garageInventory
+                .Select
         }
         public IEnumerator<T> GetEnumerator()
         {

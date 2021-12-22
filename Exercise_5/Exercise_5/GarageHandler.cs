@@ -10,13 +10,18 @@ namespace Exercise_5
     internal class GarageHandler
     {
         private Garage<Vehicle> garage;
-        internal void Run(int garageCapacity)
+        internal bool Run(int garageCapacity)
         {
             garage = new Garage<Vehicle>(garageCapacity);
+            return true;
         }
-        internal void ParkVehicle()
+        internal bool IsFull()
         {
-
+            return garage.IsFull();
+        }
+        internal bool ParkVehicle(Vehicle vehicle)
+        {
+            return garage.AddVehicle(vehicle);
         }
     }
 }

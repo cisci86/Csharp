@@ -38,7 +38,15 @@ namespace Exercise_5
                     garageHandler.Run(parkingSlots);
                     break;
                 case 2:
-                    VehicleChoice();
+                    if (garageHandler.IsFull())
+                    {
+                        uI.PrintMessage("Sorry the garage is full");
+                        break;
+                    }
+                    if (garageHandler.ParkVehicle(VehicleChoice()))
+                        uI.PrintMessage("Your vehicle is now parked");
+                    else
+                        uI.PrintMessage("The garage is full");
                     break;
                 case 0:
                     Environment.Exit(0);
@@ -55,13 +63,25 @@ namespace Exercise_5
         {
             uI.PrintVehicleMenu();
             int vehicleType = uI.GetUserChoice("Please enter a valid value");
-            uI.PrintMessage("RegNumber:");
-            string regNumber = uI.GetUserInputString();
+            if (vehicleType == 0)
+                return null!;
+            uI.PrintMessage("RegNumber (ABC123):");
+            bool regNumcorrect = false;
+            string regNumber;
+            do
+            {
+
+                regNumber = uI.GetUserInputString().ToUpper();
+                if (Utility.ChechRegNumber(regNumber))
+                    regNumcorrect = true;
+                else
+                    uI.PrintMessage("Please enter a correct Registration Number!");
+            } while (!regNumcorrect);
             uI.PrintMessage("Color:");
             string color = uI.GetUserInputString();
             uI.PrintMessage("Number of wheels:");
-            int numberOfWheels = uI.GetUserChoice("Please enter a value bigger then 0");
-            Vehicle vehicle = new Vehicle(regNumber, color, numberOfWheels);
+            int numberOfWheels = uI.GetUserChoice("Please enter a number bigger then 0");
+            Vehicle vehicle = new(regNumber, color, numberOfWheels);
             switch (vehicleType)
             {
                 case 1:
@@ -73,6 +93,21 @@ namespace Exercise_5
                     uI.PrintMessage("How big cylinder volume do you have?");
                     int cylinderVolume = uI.GetUserChoice();
                     vehicle = new Motorcycle(regNumber, color, numberOfWheels, cylinderVolume);
+                    break;
+                case 3:
+                    uI.PrintMessage("How many seats does the bus have?");
+                    int numerOfSeats = uI.GetUserChoice();
+                    vehicle = new Bus(regNumber, color, numberOfWheels, numerOfSeats);
+                    break;
+                case 4:
+                    uI.PrintMessage("How long is your boat?");
+                    int lenght = uI.GetUserChoice();
+                    vehicle = new Boat(regNumber, color, numberOfWheels, lenght);
+                    break;
+                case 5:
+                    uI.PrintMessage("How many engines does you plane have?");
+                    int numberOfEngins = uI.GetUserChoice();
+                    vehicle = new Airplane(regNumber, color, numberOfWheels, numberOfEngins);
                     break;
                 default:
                     break;

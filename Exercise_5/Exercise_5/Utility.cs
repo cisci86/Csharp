@@ -21,5 +21,34 @@ namespace Exercise_5
                 return null;
             return input;
         }
+        internal static bool ChechRegNumber(string regNumber)
+        {
+            bool correct = false;
+            if(regNumber.Length != 6)
+                return false;
+            char[] okChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            for(int i = 0; i < 3; i++)
+            {
+                if(regNumber[i].Equals(okChars))
+                    correct = true;
+                else
+                {
+                    correct = false;
+                    break;
+                }
+            }
+            for (int i = 3; i < regNumber.Length; i++)
+            {
+                if (int.TryParse(regNumber[i].ToString(), out int num))
+                    correct = true;
+                else
+                {
+                    correct = false;
+                    break;
+                }
+            }
+            return correct;
+
+        }
     }
 }
