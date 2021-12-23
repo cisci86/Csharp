@@ -9,6 +9,7 @@
             Console.WriteLine("Use the menu to navigate");
             Console.WriteLine("* 1: Create a new Garage");
             Console.WriteLine("* 2: Park a new vehicle");
+            Console.WriteLine("* 3: Show all parked vehicles");
             Console.WriteLine("* 0: Exit the program\n");
             Console.WriteLine("Enter your choice:");
         }

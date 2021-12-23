@@ -37,9 +37,12 @@ namespace Exercise_5
         }
         public void Search()
         {
-            var q = garageInventory
-                .Select
+
         }
+       public T[] GetArray()
+        {
+            return garageInventory.ToArray();
+        } 
         public IEnumerator<T> GetEnumerator()
         {
             foreach (var item in garageInventory)

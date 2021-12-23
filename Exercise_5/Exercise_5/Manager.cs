@@ -65,23 +65,24 @@ namespace Exercise_5
             int vehicleType = uI.GetUserChoice("Please enter a valid value");
             if (vehicleType == 0)
                 return null!;
+
             uI.PrintMessage("RegNumber (ABC123):");
             bool regNumcorrect = false;
             string regNumber;
             do
             {
-
                 regNumber = uI.GetUserInputString().ToUpper();
-                if (Utility.ChechRegNumber(regNumber))
-                    regNumcorrect = true;
-                else
-                    uI.PrintMessage("Please enter a correct Registration Number!");
+                regNumcorrect = CheckRegNumber(regNumber);
             } while (!regNumcorrect);
+
             uI.PrintMessage("Color:");
             string color = uI.GetUserInputString();
+
             uI.PrintMessage("Number of wheels:");
             int numberOfWheels = uI.GetUserChoice("Please enter a number bigger then 0");
+
             Vehicle vehicle = new(regNumber, color, numberOfWheels);
+
             switch (vehicleType)
             {
                 case 1:
@@ -113,6 +114,26 @@ namespace Exercise_5
                     break;
             }
             return vehicle;
+        }
+        public bool CheckRegNumber(string regNumber)
+        {
+            bool regNumCorrect = false;
+            if (Utility.ChechRegNumber(regNumber))
+                regNumCorrect = true;
+            else
+                uI.PrintMessage("Please enter a correct Registration Number!");
+            if (garageHandler.UniqueRegNumber(regNumber))
+                regNumCorrect = true;
+            else
+            {
+                regNumCorrect = false;
+                uI.PrintMessage("A vehicle with that RegNumber is already parked, Please enter an other RegNumber");
+            }
+            return regNumCorrect;
+        }
+        public void ShowAllParkedVehicles()
+        {
+           
         }
     }
 }

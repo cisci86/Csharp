@@ -23,5 +23,24 @@ namespace Exercise_5
         {
             return garage.AddVehicle(vehicle);
         }
+        public bool UniqueRegNumber(string regNumber)
+        {
+            Vehicle[] vehicelArray = garage.GetArray();
+            bool unique = false;
+            for (int i = 0; i < vehicelArray.Length; i++)
+            {
+                if(vehicelArray[i] == null)
+                    unique = true;
+                else if (regNumber != vehicelArray[i].RegNumber)
+                    unique = true;
+                else
+                {
+                    unique = false;
+                    break;
+                }
+                    
+            }
+            return unique;
+        }
     }
 }
