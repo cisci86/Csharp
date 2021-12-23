@@ -79,8 +79,6 @@ namespace Exercise_5
             {
                 switch (searchParams.VehicleType)
                 {
-                    case VehicleType.Undefined:
-                        break;
                     case VehicleType.Airplane:
                         searchResult.OfType<Airplane>();
                         break;
@@ -104,7 +102,7 @@ namespace Exercise_5
                 searchResult = searchResult.Where(v => v.RegNumber == searchParams.RegNumber);
 
             if(searchParams.NumberOfWheels != null)
-                searchResult = searchResult.Where(v => v.NumberOfWheels == searchParams.NumberOfWheels);
+                searchResult = searchResult.Where(v => v != null && v.NumberOfWheels == searchParams.NumberOfWheels);
 
             return searchResult;
         }

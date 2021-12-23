@@ -15,11 +15,10 @@ namespace Exercise_5
     }
     public enum VehicleType
     {
-        Undefined,
-        Airplane,
-        Boat,
-        Bus,
         Car,
-        Motorcycle
+        Motorcycle,
+        Bus,
+        Boat,
+        Airplane
     }
 }

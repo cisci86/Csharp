@@ -60,6 +60,9 @@ namespace Exercise_5
                 case 6:
                     SearchVehicleByLicensePlate();
                     break;
+                case 7:
+                    SearchVehicle();
+                    break;
                 case 0:
                     Environment.Exit(0);
                     break;
@@ -87,6 +90,7 @@ namespace Exercise_5
                 regNumcorrect = CheckRegNumberWhenParking(regNumber);
             } while (!regNumcorrect);
 
+            uI.PrintMessage("What color do you vehicle have?");
             uI.ShowColors();
             int colorNr = -1;
             do
@@ -213,8 +217,63 @@ namespace Exercise_5
         public void SearchVehicle()
         {
             SearchParams searchParams = new SearchParams();
+            int userChoice = -1;
+            do
+            {
+                uI.Search();
+                userChoice = uI.GetUserChoice("Please enter a valid choice!");
+                switch (userChoice)
+                {
+                    case 1:
+                        uI.PrintMessage("Which vehicle type do you want to search for?");
+                        uI.PrintVehicleType();
+                        int vehicleChoice = -1;
+                        do
+                        {
+                            vehicleChoice = uI.GetUserChoice();
+                            if (vehicleChoice >= 5)
+                                uI.PrintMessage("Please enter a number from the list!");
+                        } while (vehicleChoice >= 5);
+                        searchParams.VehicleType = (VehicleType)vehicleChoice - 1;
+                        break;
+                    case 2:
+                        uI.PrintMessage("What are the license plate number you like to search for? (ABC123)");
+                        searchParams.RegNumber = uI.GetUserInputString();
+                        break;
+                    case 3:
+                        uI.PrintMessage("What color do you want to search for?");
+                        uI.ShowColors();
+                        int colorNr = -1;
+                        do
+                        {
+                            colorNr = uI.GetUserChoice();
+                            if (colorNr >= 14)
+                                uI.PrintMessage("Please enter a number from the list!");
+                        } while (colorNr >= 14);
+                        searchParams.Color = (Color)colorNr;
+                        break;
+                    case 4:
+                        uI.PrintMessage("Which amount of wheels do you want to search for?");
+                        searchParams.NumberOfWheels = uI.GetUserChoice();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        uI.PrintMessage("Please enter a valid option!");
+                        break;
+                }
+            } while (userChoice != 0);
 
-            garageHandler.Search(searchParams);
+            IEnumerable<Vehicle> searchResult = garageHandler.Search(searchParams);
+            if (searchResult != null)
+            {
+                foreach (var item in searchResult)
+                {
+                    uI.PrintMessage(item.ToString());
+                }
+            }
+            else
+                uI.PrintMessage("there were no vehicle that matches your criteria");
         }
     }
 }

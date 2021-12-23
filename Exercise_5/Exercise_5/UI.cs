@@ -13,6 +13,7 @@
             Console.WriteLine("* 4: Show all parked vehicles");
             Console.WriteLine("* 5: Show how many of each type of vehicle is parked in the garage");
             Console.WriteLine("* 6: Search for vehicle by license plate");
+            Console.WriteLine("* 7: Search vehicle by parameters");
             Console.WriteLine("* 0: Exit the program\n");
             Console.WriteLine("Enter your choice:");
         }
@@ -37,11 +38,7 @@
         {
             Console.WriteLine("Please add the following information about your vehicle:");
             Console.WriteLine("Which vehicle type do you have?");
-            Console.WriteLine("* 1: Car");
-            Console.WriteLine("* 2: Motorcycle");
-            Console.WriteLine("* 3: Bus");
-            Console.WriteLine("* 4: Boat");
-            Console.WriteLine("* 5: Airplane");
+            PrintVehicleType();
             Console.WriteLine("* 0: Exit");
         }
         public string GetUserInputString()
@@ -49,7 +46,7 @@
             string userInputString;
             do
             {
-                userInputString = Utility.VerifyStringInput(Console.ReadLine());
+                userInputString = Utility.VerifyStringInput(Console.ReadLine()!);
                 if (userInputString == null)
                     Console.WriteLine("Please enter a valid input!");
             } while (userInputString == null);
@@ -57,11 +54,28 @@
         }
         public void ShowColors()
         {
-            Console.WriteLine("Which color is your vehicle?");
             int number = 1;
             foreach (var c in Enum.GetValues(typeof(Color)))
             {
                 Console.WriteLine($"* {number}: {c}");
+                number++;
+            }
+        }
+        public void Search()
+        {
+            Console.WriteLine("What do you want to search on?");
+            Console.WriteLine("* 1: Vehicletype");
+            Console.WriteLine("* 2: License plate");
+            Console.WriteLine("* 3: Color");
+            Console.WriteLine("* 4: Number of wheels");
+            Console.WriteLine("* 0: Exit / Search");
+        }
+        public void PrintVehicleType()
+        {
+            int number = 1;
+            foreach (var vT in Enum.GetValues(typeof(VehicleType)))
+            {
+                Console.WriteLine($"* {number}: {vT}");
                 number++;
             }
         }

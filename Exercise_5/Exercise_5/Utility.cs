@@ -18,7 +18,7 @@ namespace Exercise_5
         internal static string VerifyStringInput(string input)
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrWhiteSpace(input))
-                return null;
+                return null!;
             return input;
         }
         internal static bool ChechRegNumber(string regNumber)
