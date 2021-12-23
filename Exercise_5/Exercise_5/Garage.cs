@@ -35,14 +35,24 @@ namespace Exercise_5
             }
             return isFull;
         }
-        public void Search()
+        public bool IsEmpty()
         {
-
+            bool isEmpty = true;
+            for (int i = 0; i < garageInventory.Length; i++)
+            {
+                if (garageInventory[i] != null)
+                    isEmpty = false;
+            }
+            return isEmpty;
         }
        public T[] GetArray()
         {
             return garageInventory.ToArray();
         } 
+        public void RemoveVehicle(int indexToRemove)
+        {
+            garageInventory = garageInventory.Where((source, index) => index != indexToRemove).ToArray();
+        }
         public IEnumerator<T> GetEnumerator()
         {
             foreach (var item in garageInventory)

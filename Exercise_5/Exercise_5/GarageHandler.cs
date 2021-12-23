@@ -19,6 +19,10 @@ namespace Exercise_5
         {
             return garage.IsFull();
         }
+        public bool IsEmpty()
+        {
+            return garage.IsEmpty();
+        }
         internal bool ParkVehicle(Vehicle vehicle)
         {
             return garage.AddVehicle(vehicle);
@@ -45,6 +49,27 @@ namespace Exercise_5
         public Vehicle[] ShowParkedVehicles()
         {
             return garage.GetArray();
+        }
+        public string RemoveVehicle(string RegNum)
+        {
+            Vehicle[] vehicles = garage.GetArray();
+            string message ="";
+            int index = -1;
+            for (int i = 0; i < vehicles.Length; i++)
+            {
+                if (vehicles[i] == null)
+                    continue;
+                if(vehicles[i].RegNumber == RegNum)
+                    index = i;
+            }
+            if (index != -1)
+            {
+                garage.RemoveVehicle(index);
+                message = $"The vehicle with license plate: {RegNum} has been collected";
+            }
+            else
+                message = $"There are no vehicle with that the license plate : {RegNum}";
+            return message;
         }
     }
 }

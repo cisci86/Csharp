@@ -1,4 +1,5 @@
 ﻿using Exercise_5.Vehicles;
+using System.Linq;
 
 namespace Exercise_5
 {
@@ -49,7 +50,16 @@ namespace Exercise_5
                         uI.PrintMessage("The garage is full");
                     break;
                 case 3:
+                    CollectVehicel();
+                    break;
+                case 4:
                     ShowAllParkedVehicles();
+                    break;
+                case 5:
+                    ShowVehicleByType();
+                    break;
+                case 6:
+                    SearchVehicleByLicensePlate();
                     break;
                 case 0:
                     Environment.Exit(0);
@@ -69,7 +79,7 @@ namespace Exercise_5
             if (vehicleType == 0)
                 return null!;
 
-            uI.PrintMessage("RegNumber (ABC123):");
+            uI.PrintMessage("License plate (ABC123):");
             bool regNumcorrect = false;
             string regNumber;
             do
@@ -124,15 +134,26 @@ namespace Exercise_5
             if (Utility.ChechRegNumber(regNumber))
                 regNumCorrect = true;
             else
-                uI.PrintMessage("Please enter a correct Registration Number!");
+                uI.PrintMessage("Please enter a correct License plate!");
             if (garageHandler.UniqueRegNumber(regNumber))
                 regNumCorrect = true;
             else
             {
                 regNumCorrect = false;
-                uI.PrintMessage("A vehicle with that RegNumber is already parked, Please enter an other RegNumber");
+                uI.PrintMessage($"A vehicle with that License plate: {regNumber} is already parked, Please enter an other vehicle");
             }
             return regNumCorrect;
+        }
+        public void CollectVehicel()
+        {
+            uI.PrintMessage("What license plate do the vehicle that you want to collect have?");
+            string regNum = Utility.VerifyStringInput(uI.GetUserInputString().ToUpper());
+            do
+            {
+                if (!Utility.ChechRegNumber(regNum))
+                    uI.PrintMessage("Please enter a correct License plate number!");
+            } while (!Utility.ChechRegNumber(regNum));
+            uI.PrintMessage(garageHandler.RemoveVehicle(regNum));
         }
         public void ShowAllParkedVehicles()
         {
@@ -144,7 +165,42 @@ namespace Exercise_5
                     uI.PrintMessage("Empty");
                     continue;
                 }
-                uI.PrintMessage($"{i}. {vehicles[i].ToString()}");
+                uI.PrintMessage($"{i + 1}. {vehicles[i].ToString()}");
+            }
+        }
+        public void ShowVehicleByType()
+        {
+            Vehicle[] vehicle = garageHandler.ShowParkedVehicles();
+            var vehicleByType = vehicle
+                .Where(v => v != null)
+                .GroupBy(v => v.GetType());
+            foreach (var group in vehicleByType)
+            {
+                uI.PrintMessage($"There are {group.Count()} {group.Key.Name} in the garage");
+            }
+        }
+        public void SearchVehicleByLicensePlate()
+        {
+            if (garageHandler.IsEmpty())
+            {
+                uI.PrintMessage("Sorry, there are no vehicles parked in the garage!");
+                return;
+            }
+
+            Vehicle[] vehicles = garageHandler.ShowParkedVehicles();
+
+            uI.PrintMessage("What license plate do you want to search for?");
+            string regNum = Utility.VerifyStringInput(uI.GetUserInputString().ToUpper());
+            do
+            {
+                if (!Utility.ChechRegNumber(regNum))
+                    uI.PrintMessage("Please enter a correct License plate number!");
+            } while (!Utility.ChechRegNumber(regNum));
+            var vehicleByLicensePlate = vehicles
+                .Where(v => v != null && v.RegNumber == regNum);
+            foreach (var v in vehicleByLicensePlate)
+            {
+                uI.PrintMessage($"The Vehicle with license plate : {regNum} is {v}");
             }
         }
     }
