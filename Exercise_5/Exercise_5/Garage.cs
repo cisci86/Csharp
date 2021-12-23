@@ -2,7 +2,7 @@
 
 namespace Exercise_5
 {
-    internal class Garage<T> : IEnumerable<T>
+    internal class Garage<T> : IEnumerable<T>  
     {
         public Garage(int capacity)
         {

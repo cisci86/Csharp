@@ -57,6 +57,7 @@
         }
         public void ShowColors()
         {
+            Console.WriteLine("Which color is your vehicle?");
             int number = 1;
             foreach (var c in Enum.GetValues(typeof(Color)))
             {

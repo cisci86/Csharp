@@ -71,5 +71,42 @@ namespace Exercise_5
                 message = $"There are no vehicle with that the license plate : {RegNum}";
             return message;
         }
+        public IEnumerable<Vehicle> Search(SearchParams searchParams)
+        {
+            Vehicle[] vehicle = garage.GetArray();
+            IEnumerable<Vehicle> searchResult = vehicle;
+            if (searchParams.VehicleType != null)
+            {
+                switch (searchParams.VehicleType)
+                {
+                    case VehicleType.Undefined:
+                        break;
+                    case VehicleType.Airplane:
+                        searchResult.OfType<Airplane>();
+                        break;
+                    case VehicleType.Boat:
+                        searchResult.OfType<Boat>();
+                        break;
+                    case VehicleType.Bus:
+                        searchResult.OfType<Bus>();
+                        break;
+                    case VehicleType.Car:
+                        searchResult.OfType<Car>();
+                        break;
+                    case VehicleType.Motorcycle:
+                        searchResult.OfType<Motorcycle>();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if(searchParams.RegNumber != null)
+                searchResult = searchResult.Where(v => v.RegNumber == searchParams.RegNumber);
+
+            if(searchParams.NumberOfWheels != null)
+                searchResult = searchResult.Where(v => v.NumberOfWheels == searchParams.NumberOfWheels);
+
+            return searchResult;
+        }
     }
 }

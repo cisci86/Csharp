@@ -1,5 +1,4 @@
 ﻿using Exercise_5.Vehicles;
-using System.Linq;
 
 namespace Exercise_5
 {
@@ -88,8 +87,16 @@ namespace Exercise_5
                 regNumcorrect = CheckRegNumberWhenParking(regNumber);
             } while (!regNumcorrect);
 
-            uI.PrintMessage("Color:");
-            Enum color = (Color)uI.GetUserChoice();
+            uI.ShowColors();
+            int colorNr = -1;
+            do
+            {
+                colorNr = uI.GetUserChoice();
+                if (colorNr >= 14)
+                    uI.PrintMessage("Please enter a number from the list!");
+            } while (colorNr >= 14);
+            Enum color = (Color)colorNr - 1;
+
 
             uI.PrintMessage("Number of wheels:");
             int numberOfWheels = uI.GetUserChoice("Please enter a number bigger then 0");
@@ -157,7 +164,7 @@ namespace Exercise_5
         }
         public void ShowAllParkedVehicles()
         {
-           Vehicle[] vehicles = garageHandler.ShowParkedVehicles();
+            Vehicle[] vehicles = garageHandler.ShowParkedVehicles();
             for (int i = 0; i < vehicles.Length; i++)
             {
                 if (vehicles[i] == null)
@@ -202,6 +209,12 @@ namespace Exercise_5
             {
                 uI.PrintMessage($"The Vehicle with license plate : {regNum} is {v}");
             }
+        }
+        public void SearchVehicle()
+        {
+            SearchParams searchParams = new SearchParams();
+
+            garageHandler.Search(searchParams);
         }
     }
 }
