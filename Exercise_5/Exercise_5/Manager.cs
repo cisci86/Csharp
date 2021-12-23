@@ -48,6 +48,9 @@ namespace Exercise_5
                     else
                         uI.PrintMessage("The garage is full");
                     break;
+                case 3:
+                    ShowAllParkedVehicles();
+                    break;
                 case 0:
                     Environment.Exit(0);
                     break;
@@ -133,7 +136,16 @@ namespace Exercise_5
         }
         public void ShowAllParkedVehicles()
         {
-           
+           Vehicle[] vehicles = garageHandler.ShowParkedVehicles();
+            for (int i = 0; i < vehicles.Length; i++)
+            {
+                if (vehicles[i] == null)
+                {
+                    uI.PrintMessage("Empty");
+                    continue;
+                }
+                uI.PrintMessage($"{i}. {vehicles[i].ToString()}");
+            }
         }
     }
 }

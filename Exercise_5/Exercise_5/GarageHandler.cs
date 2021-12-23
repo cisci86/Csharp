@@ -42,5 +42,9 @@ namespace Exercise_5
             }
             return unique;
         }
+        public Vehicle[] ShowParkedVehicles()
+        {
+            return garage.GetArray();
+        }
     }
 }

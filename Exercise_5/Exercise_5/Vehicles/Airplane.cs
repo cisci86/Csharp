@@ -14,5 +14,9 @@ namespace Exercise_5.Vehicles
         }
 
         public int NumberOfEngines { get; set; }
+        public override string ToString()
+        {
+            return base.ToString() + $" Number Of Engines: {NumberOfEngines}";
+        }
     }
 }

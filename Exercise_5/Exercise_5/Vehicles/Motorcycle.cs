@@ -14,5 +14,9 @@ namespace Exercise_5.Vehicles
         }
 
         public int CylinderVolume { get; set; }
+        public override string ToString()
+        {
+            return base.ToString() + $" Cylinder Volume: {CylinderVolume}";
+        }
     }
 }

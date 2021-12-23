@@ -14,5 +14,10 @@ namespace Exercise_5.Vehicles
         }
 
         public int NumberOfSeats { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString() + $" Number Of Seats: {NumberOfSeats}";
+        }
     }
 }

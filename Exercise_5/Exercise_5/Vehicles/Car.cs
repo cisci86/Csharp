@@ -14,5 +14,9 @@ namespace Exercise_5.Vehicles
         }
 
         public string Fueltype { get; set; }
+        public override string ToString()
+        {
+            return base.ToString() + $" Fuel Type: {Fueltype}";
+        }
     }
 }

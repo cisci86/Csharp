@@ -12,5 +12,10 @@
         public string Color { get; set; }
         public int NumberOfWheels { get; set; }
 
+        public override string ToString()
+        {
+            return $"Vehicle Type:{this.GetType().Name}, Registration Number: {RegNumber}, Color: {Color}, Number Of Wheels: {NumberOfWheels}";
+        }
+
     }
 }
