@@ -2,14 +2,14 @@
 {
     public class Vehicle
     {
-        public Vehicle(string regNumber, string color, int numberOfWheels)
+        public Vehicle(string regNumber, Enum color, int numberOfWheels)
         {
             RegNumber = regNumber;
             Color = color;
             NumberOfWheels = numberOfWheels;
         }
         public string RegNumber { get; set; }
-        public string Color { get; set; }
+        public Enum Color { get; set; }
         public int NumberOfWheels { get; set; }
 
         public override string ToString()

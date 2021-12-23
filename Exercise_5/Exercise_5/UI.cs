@@ -55,5 +55,14 @@
             } while (userInputString == null);
             return userInputString;
         }
+        public void ShowColors()
+        {
+            int number = 1;
+            foreach (var c in Enum.GetValues(typeof(Color)))
+            {
+                Console.WriteLine($"* {number}: {c}");
+                number++;
+            }
+        }
     }
 }

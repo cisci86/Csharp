@@ -85,11 +85,11 @@ namespace Exercise_5
             do
             {
                 regNumber = uI.GetUserInputString().ToUpper();
-                regNumcorrect = CheckRegNumber(regNumber);
+                regNumcorrect = CheckRegNumberWhenParking(regNumber);
             } while (!regNumcorrect);
 
             uI.PrintMessage("Color:");
-            string color = uI.GetUserInputString();
+            Enum color = (Color)uI.GetUserChoice();
 
             uI.PrintMessage("Number of wheels:");
             int numberOfWheels = uI.GetUserChoice("Please enter a number bigger then 0");
@@ -128,7 +128,7 @@ namespace Exercise_5
             }
             return vehicle;
         }
-        public bool CheckRegNumber(string regNumber)
+        public bool CheckRegNumberWhenParking(string regNumber)
         {
             bool regNumCorrect = false;
             if (Utility.ChechRegNumber(regNumber))
