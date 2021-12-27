@@ -2,7 +2,7 @@
 
 namespace Exercise_5
 {
-    internal class Garage<T> : IEnumerable<T> where T : class 
+    public class Garage<T> : IEnumerable<T> /*where T : class*/ 
     {
         public Garage(int capacity)
         {
@@ -51,7 +51,7 @@ namespace Exercise_5
         } 
         public void RemoveVehicle(int indexToRemove)
         {
-            garageInventory[indexToRemove] = null!;
+            //garageInventory[indexToRemove] = null!;
         }
         public IEnumerator<T> GetEnumerator()
         {
