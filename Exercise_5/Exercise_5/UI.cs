@@ -4,6 +4,7 @@
     {
         public void PrintStartMenu()
         {
+            Console.Clear();
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine("\tWELCOME TO YOUR GARGE");
             Console.WriteLine("Use the menu to navigate");
@@ -15,7 +16,7 @@
             Console.WriteLine("* 6: Search for vehicle by license plate");
             Console.WriteLine("* 7: Search vehicle by parameters");
             Console.WriteLine("* 0: Exit the program\n");
-            Console.WriteLine("Enter your choice:");
+            Console.WriteLine("Please enter your choice:");
         }
         public int GetUserChoice(string message = "Please enter a valid value!")
         {
@@ -33,7 +34,12 @@
         {
             Console.WriteLine(message);
         }
-
+        public void PrintNewGarageMenu()
+        {
+            Console.WriteLine("You already have a garage, do you really want to make a new one (the old garage will be removed)? ");
+            Console.WriteLine("* 1: Yes");
+            Console.WriteLine("* 0: No");
+        }
         public void PrintVehicleMenu()
         {
             Console.WriteLine("Please add the following information about your vehicle:");
@@ -63,6 +69,7 @@
         }
         public void Search()
         {
+            Console.WriteLine("Use the menu below to enter your search, you can add parameters to search for until you press '0'");
             Console.WriteLine("What do you want to search on?");
             Console.WriteLine("* 1: Vehicletype");
             Console.WriteLine("* 2: Color");

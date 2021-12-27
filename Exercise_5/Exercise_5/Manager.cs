@@ -6,6 +6,7 @@ namespace Exercise_5
     {
         UI uI;
         GarageHandler garageHandler;
+        bool garageCreated = false;
         public Manager()
         {
             uI = new UI();
@@ -24,29 +25,22 @@ namespace Exercise_5
         }
         public void UserMenuOption(int userChoice)
         {
+
             switch (userChoice)
             {
                 case 1:
-                    int parkingSlots;
-                    uI.PrintMessage("How many parking slots should your garage have?");
-                    do
+                    if (garageCreated == true)
+                        garageCreated = NewGarage();
+                    if (!garageCreated)
                     {
-                        parkingSlots = uI.GetUserChoice("Please enter a value bigger then 0");
-                        if (parkingSlots <= 0)
-                            uI.PrintMessage("Please enter a value bigger then 0");
-                    } while (parkingSlots <= 0);
-                    garageHandler.Run(parkingSlots);
+                        Console.Clear();
+                        CreateGarge();
+                        garageCreated = true;
+                    }
                     break;
                 case 2:
-                    if (garageHandler.IsFull())
-                    {
-                        uI.PrintMessage("Sorry the garage is full");
-                        break;
-                    }
-                    if (garageHandler.ParkVehicle(VehicleChoice()))
-                        uI.PrintMessage("Your vehicle is now parked");
-                    else
-                        uI.PrintMessage("The garage is full");
+                    Console.Clear();
+                    ParkVehicle();
                     break;
                 case 3:
                     Console.Clear();
@@ -78,6 +72,39 @@ namespace Exercise_5
                     uI.PrintMessage("Please enter a valid option!");
                     break;
             }
+        }
+        public void CreateGarge()
+        {
+            int parkingSlots;
+            uI.PrintMessage("How many parking slots should your garage have?");
+            do
+            {
+                parkingSlots = uI.GetUserChoice("Please enter a value bigger then 0");
+                if (parkingSlots <= 0)
+                    uI.PrintMessage("Please enter a value bigger then 0");
+            } while (parkingSlots <= 0);
+            garageHandler.Run(parkingSlots);
+        }
+        public bool NewGarage()
+        {
+            bool newGarage = true;
+            uI.PrintNewGarageMenu();
+            int userChoice = uI.GetUserChoice("Please enter a value bigger then 0");
+            if(userChoice == 1)
+                newGarage = false;
+            return newGarage;
+        }
+        public void ParkVehicle()
+        {
+            if (garageHandler.IsFull())
+            {
+                uI.PrintMessage("Sorry the garage is full");
+                return;
+            }
+            if (garageHandler.ParkVehicle(VehicleChoice()))
+                uI.PrintMessage("Your vehicle is now parked");
+            else
+                uI.PrintMessage("The garage is full");
         }
         public Vehicle VehicleChoice()
         {
@@ -170,19 +197,21 @@ namespace Exercise_5
                     uI.PrintMessage("Please enter a correct License plate number!");
             } while (!Utility.ChechRegNumber(regNum));
             uI.PrintMessage(garageHandler.RemoveVehicle(regNum));
+            Exit();
         }
         public void ShowAllParkedVehicles()
         {
             Vehicle[] vehicles = garageHandler.ShowParkedVehicles();
+            uI.PrintMessage("In the garage the following vehicles are parked: ");
             for (int i = 0; i < vehicles.Length; i++)
             {
                 if (vehicles[i] == null)
                 {
-                    uI.PrintMessage("Empty");
                     continue;
                 }
                 uI.PrintMessage($"{i + 1}. {vehicles[i].ToString()}");
             }
+           Exit();
         }
         public void ShowVehicleByType()
         {
@@ -194,6 +223,7 @@ namespace Exercise_5
             {
                 uI.PrintMessage($"There are {group.Count()} {group.Key.Name} in the garage");
             }
+            Exit();
         }
         public void SearchVehicleByLicensePlate()
         {
@@ -218,6 +248,7 @@ namespace Exercise_5
             {
                 uI.PrintMessage($"The Vehicle with license plate : {regNum} is {v}");
             }
+            Exit();
         }
         public void SearchVehicle()
         {
@@ -278,9 +309,12 @@ namespace Exercise_5
             }
             else
                 uI.PrintMessage("There were no vehicle that matches your criteria");
-            uI.PrintMessage("Press any key to Exit");
+            Exit();
+        }
+        public void Exit()
+        {
+            uI.PrintMessage("Press any key to exit to main menu");
             Console.ReadLine();
-
         }
     }
 }
