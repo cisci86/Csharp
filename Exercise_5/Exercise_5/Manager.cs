@@ -30,7 +30,7 @@ namespace Exercise_5
             {
                 case 1:
                     if (garageCreated == true)
-                        garageCreated = NewGarage();
+                        garageCreated = CreateNewGarage();
                     if (!garageCreated)
                     {
                         Console.Clear();
@@ -39,26 +39,29 @@ namespace Exercise_5
                     }
                     break;
                 case 2:
-                    Console.Clear();
-                    ParkVehicle();
+                    garageHandler.GetDummieData();
                     break;
                 case 3:
                     Console.Clear();
-                    CollectVehicel();
+                    ParkVehicle();
                     break;
                 case 4:
                     Console.Clear();
-                    ShowAllParkedVehicles();
+                    CollectVehicel();
                     break;
                 case 5:
                     Console.Clear();
-                    ShowVehicleByType();
+                    ShowAllParkedVehicles();
                     break;
                 case 6:
                     Console.Clear();
-                    SearchVehicleByLicensePlate();
+                    ShowVehicleByType();
                     break;
                 case 7:
+                    Console.Clear();
+                    SearchVehicleByLicensePlate();
+                    break;
+                case 8:
                     Console.Clear();
                     SearchVehicle();
                     break;
@@ -85,12 +88,12 @@ namespace Exercise_5
             } while (parkingSlots <= 0);
             garageHandler.Run(parkingSlots);
         }
-        public bool NewGarage()
+        public bool CreateNewGarage()
         {
             bool newGarage = true;
             uI.PrintNewGarageMenu();
             int userChoice = uI.GetUserChoice("Please enter a value bigger then 0");
-            if(userChoice == 1)
+            if (userChoice == 1)
                 newGarage = false;
             return newGarage;
         }
@@ -106,6 +109,7 @@ namespace Exercise_5
             else
                 uI.PrintMessage("The garage is full");
         }
+
         public Vehicle VehicleChoice()
         {
             uI.PrintVehicleMenu();
@@ -207,11 +211,12 @@ namespace Exercise_5
             {
                 if (vehicles[i] == null)
                 {
+                    uI.PrintMessage("Empty");
                     continue;
                 }
                 uI.PrintMessage($"{i + 1}. {vehicles[i].ToString()}");
             }
-           Exit();
+            Exit();
         }
         public void ShowVehicleByType()
         {
@@ -313,7 +318,7 @@ namespace Exercise_5
         }
         public void Exit()
         {
-            uI.PrintMessage("Press any key to exit to main menu");
+            uI.PrintMessage("Press Enter to exit to main menu");
             Console.ReadLine();
         }
     }

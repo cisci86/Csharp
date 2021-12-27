@@ -2,7 +2,7 @@
 
 namespace Exercise_5
 {
-    internal class Garage<T> : IEnumerable<T>  
+    internal class Garage<T> : IEnumerable<T> where T : class 
     {
         public Garage(int capacity)
         {
@@ -51,7 +51,7 @@ namespace Exercise_5
         } 
         public void RemoveVehicle(int indexToRemove)
         {
-            garageInventory = garageInventory.Where((source, index) => index != indexToRemove).ToArray();
+            garageInventory[indexToRemove] = null!;
         }
         public IEnumerator<T> GetEnumerator()
         {
@@ -61,7 +61,9 @@ namespace Exercise_5
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

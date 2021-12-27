@@ -1,13 +1,16 @@
 ﻿using Exercise_5.Vehicles;
+using Newtonsoft.Json;
 
 namespace Exercise_5
 {
     internal class GarageHandler
     {
         private Garage<Vehicle> garage;
+        int garageSize = 0;
         internal bool Run(int garageCapacity)
         {
             garage = new Garage<Vehicle>(garageCapacity);
+            garageSize = garageCapacity;
             return true;
         }
         internal bool IsFull()
@@ -17,6 +20,32 @@ namespace Exercise_5
         public bool IsEmpty()
         {
             return garage.IsEmpty();
+        }
+        //public void Serilize()
+        //{
+        //    JsonSerializer jsonSerializer = new JsonSerializer();
+            
+        //    StreamWriter sw = new StreamWriter("..\\RecipeBook.txt");
+        //    foreach (Vehicle vehicle in garage.GetArray())
+        //    {
+        //        string serializedRecipe = JsonConvert.SerializeObject(vehicle);
+        //        sw.WriteLine(serializedRecipe);
+        //    }
+        //    sw.Close();
+        //}
+        public void GetDummieData()
+        {
+            StreamReader sr = new StreamReader("..\\DummieData.txt");
+            string line = sr.ReadLine();
+
+            while (line != null)
+            {
+                Vehicle vehicle = JsonConvert.DeserializeObject<Vehicle>(line);
+                garage.AddVehicle(vehicle);
+                line = sr.ReadLine();
+            }
+            sr.Close();
+
         }
         internal bool ParkVehicle(Vehicle vehicle)
         {
