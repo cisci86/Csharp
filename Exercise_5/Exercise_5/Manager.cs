@@ -49,18 +49,23 @@ namespace Exercise_5
                         uI.PrintMessage("The garage is full");
                     break;
                 case 3:
+                    Console.Clear();
                     CollectVehicel();
                     break;
                 case 4:
+                    Console.Clear();
                     ShowAllParkedVehicles();
                     break;
                 case 5:
+                    Console.Clear();
                     ShowVehicleByType();
                     break;
                 case 6:
+                    Console.Clear();
                     SearchVehicleByLicensePlate();
                     break;
                 case 7:
+                    Console.Clear();
                     SearchVehicle();
                     break;
                 case 0:
@@ -237,10 +242,6 @@ namespace Exercise_5
                         searchParams.VehicleType = (VehicleType)vehicleChoice - 1;
                         break;
                     case 2:
-                        uI.PrintMessage("What are the license plate number you like to search for? (ABC123)");
-                        searchParams.RegNumber = uI.GetUserInputString();
-                        break;
-                    case 3:
                         uI.PrintMessage("What color do you want to search for?");
                         uI.ShowColors();
                         int colorNr = -1;
@@ -250,9 +251,9 @@ namespace Exercise_5
                             if (colorNr >= 14)
                                 uI.PrintMessage("Please enter a number from the list!");
                         } while (colorNr >= 14);
-                        searchParams.Color = (Color)colorNr;
+                        searchParams.Color = (Color)colorNr - 1;
                         break;
-                    case 4:
+                    case 3:
                         uI.PrintMessage("Which amount of wheels do you want to search for?");
                         searchParams.NumberOfWheels = uI.GetUserChoice();
                         break;
@@ -264,16 +265,22 @@ namespace Exercise_5
                 }
             } while (userChoice != 0);
 
-            IEnumerable<Vehicle> searchResult = garageHandler.Search(searchParams);
-            if (searchResult != null)
+            List<Vehicle> searchResult = garageHandler.Search(searchParams);
+            if (searchResult.Count > 0)
             {
                 foreach (var item in searchResult)
                 {
-                    uI.PrintMessage(item.ToString());
+                    if (item != null)
+                        uI.PrintMessage(item.ToString());
+                    else
+                        continue;
                 }
             }
             else
-                uI.PrintMessage("there were no vehicle that matches your criteria");
+                uI.PrintMessage("There were no vehicle that matches your criteria");
+            uI.PrintMessage("Press any key to Exit");
+            Console.ReadLine();
+
         }
     }
 }

@@ -65,9 +65,8 @@
         {
             Console.WriteLine("What do you want to search on?");
             Console.WriteLine("* 1: Vehicletype");
-            Console.WriteLine("* 2: License plate");
-            Console.WriteLine("* 3: Color");
-            Console.WriteLine("* 4: Number of wheels");
+            Console.WriteLine("* 2: Color");
+            Console.WriteLine("* 3: Number of wheels");
             Console.WriteLine("* 0: Exit / Search");
         }
         public void PrintVehicleType()

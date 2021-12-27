@@ -1,9 +1,4 @@
 ﻿using Exercise_5.Vehicles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise_5
 {
@@ -33,7 +28,7 @@ namespace Exercise_5
             bool unique = false;
             for (int i = 0; i < vehicelArray.Length; i++)
             {
-                if(vehicelArray[i] == null)
+                if (vehicelArray[i] == null)
                     unique = true;
                 else if (regNumber != vehicelArray[i].RegNumber)
                     unique = true;
@@ -42,7 +37,7 @@ namespace Exercise_5
                     unique = false;
                     break;
                 }
-                    
+
             }
             return unique;
         }
@@ -53,13 +48,13 @@ namespace Exercise_5
         public string RemoveVehicle(string RegNum)
         {
             Vehicle[] vehicles = garage.GetArray();
-            string message ="";
+            string message = "";
             int index = -1;
             for (int i = 0; i < vehicles.Length; i++)
             {
                 if (vehicles[i] == null)
                     continue;
-                if(vehicles[i].RegNumber == RegNum)
+                if (vehicles[i].RegNumber == RegNum)
                     index = i;
             }
             if (index != -1)
@@ -71,7 +66,7 @@ namespace Exercise_5
                 message = $"There are no vehicle with that the license plate : {RegNum}";
             return message;
         }
-        public IEnumerable<Vehicle> Search(SearchParams searchParams)
+        public List<Vehicle> Search(SearchParams searchParams)
         {
             Vehicle[] vehicle = garage.GetArray();
             IEnumerable<Vehicle> searchResult = vehicle;
@@ -80,31 +75,29 @@ namespace Exercise_5
                 switch (searchParams.VehicleType)
                 {
                     case VehicleType.Airplane:
-                        searchResult.OfType<Airplane>();
+                       searchResult = searchResult.OfType<Airplane>();
                         break;
                     case VehicleType.Boat:
-                        searchResult.OfType<Boat>();
+                       searchResult = searchResult.OfType<Boat>();
                         break;
                     case VehicleType.Bus:
-                        searchResult.OfType<Bus>();
+                        searchResult = searchResult.OfType<Bus>();
                         break;
                     case VehicleType.Car:
-                        searchResult.OfType<Car>();
+                        searchResult = searchResult.OfType<Car>();
                         break;
                     case VehicleType.Motorcycle:
-                        searchResult.OfType<Motorcycle>();
+                        searchResult = searchResult.OfType<Motorcycle>();
                         break;
                     default:
                         break;
                 }
             }
-            if(searchParams.RegNumber != null)
-                searchResult = searchResult.Where(v => v.RegNumber == searchParams.RegNumber);
-
-            if(searchParams.NumberOfWheels != null)
+            if (searchParams.NumberOfWheels != null)
                 searchResult = searchResult.Where(v => v != null && v.NumberOfWheels == searchParams.NumberOfWheels);
-
-            return searchResult;
+            if (searchParams.Color != null)
+                searchResult = searchResult.Where(v => v != null && v.Color == searchParams.Color);
+            return searchResult.ToList();
         }
     }
 }
