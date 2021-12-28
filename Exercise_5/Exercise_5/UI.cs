@@ -1,6 +1,6 @@
 ﻿namespace Exercise_5
 {
-    public class UI
+    public class UI : IUI
     {
         public void PrintStartMenu()
         {

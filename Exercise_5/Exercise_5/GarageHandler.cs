@@ -3,17 +3,17 @@ using Newtonsoft.Json;
 
 namespace Exercise_5
 {
-    internal class GarageHandler
+    internal class GarageHandler : IGarageHandler
     {
-        private Garage<Vehicle> garage;
+        private IGarage<Vehicle> garage;
         int garageSize = 0;
-        internal bool Run(int garageCapacity)
+        public bool Run(int garageCapacity)
         {
             garage = new Garage<Vehicle>(garageCapacity);
             garageSize = garageCapacity;
             return true;
         }
-        internal bool IsFull()
+        public bool IsFull()
         {
             return garage.IsFull();
         }
@@ -21,22 +21,7 @@ namespace Exercise_5
         {
             return garage.IsEmpty();
         }
-        //public void Serilize()
-        //{
-        //    JsonSerializer jsonSerializer = new JsonSerializer();
-        //    var jsonSerializerSettings = new JsonSerializerSettings()
-        //    {
-        //        TypeNameHandling = TypeNameHandling.All
-        //    };
 
-        //    StreamWriter sw = new StreamWriter("..\\RecipeBook.txt");
-        //    foreach (Vehicle vehicle in garage.GetArray())
-        //    {
-        //        string serializedRecipe = JsonConvert.SerializeObject(vehicle, jsonSerializerSettings);
-        //        sw.WriteLine(serializedRecipe);
-        //    }
-        //    sw.Close();
-        //}
         public void GetDummieData()
         {
             StreamReader sr = new StreamReader("..\\DummieData.txt");
@@ -44,17 +29,19 @@ namespace Exercise_5
 
             while (line != null)
             {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 Vehicle vehicle = JsonConvert.DeserializeObject<Vehicle>(line, new JsonSerializerSettings
                 {
                     TypeNameHandling = TypeNameHandling.Auto
                 });
-                garage.AddVehicle(vehicle);
+
+                garage.AddVehicle(vehicle!);
                 line = sr.ReadLine();
             }
             sr.Close();
-
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
         }
-        internal bool ParkVehicle(Vehicle vehicle)
+        public bool ParkVehicle(Vehicle vehicle)
         {
             return garage.AddVehicle(vehicle);
         }
@@ -111,10 +98,10 @@ namespace Exercise_5
                 switch (searchParams.VehicleType)
                 {
                     case VehicleType.Airplane:
-                       searchResult = searchResult.OfType<Airplane>();
+                        searchResult = searchResult.OfType<Airplane>();
                         break;
                     case VehicleType.Boat:
-                       searchResult = searchResult.OfType<Boat>();
+                        searchResult = searchResult.OfType<Boat>();
                         break;
                     case VehicleType.Bus:
                         searchResult = searchResult.OfType<Bus>();

@@ -2,7 +2,7 @@
 
 namespace Exercise_5
 {
-    public class Garage<T> : IEnumerable<T> where T : Vehicle
+    public class Garage<T> : IEnumerable<T>, IGarage<T> where T : Vehicle
     {
         public Garage(int capacity)
         {
@@ -28,7 +28,7 @@ namespace Exercise_5
             bool isFull = true;
             for (int i = 0; i < garageInventory.Length; i++)
             {
-                if(garageInventory[i] == null)
+                if (garageInventory[i] == null)
                 {
                     isFull = false;
                 }
@@ -45,10 +45,10 @@ namespace Exercise_5
             }
             return isEmpty;
         }
-       public T[] GetArray()
+        public T[] GetArray()
         {
             return garageInventory.ToArray();
-        } 
+        }
         public void RemoveVehicle(int indexToRemove)
         {
             garageInventory[indexToRemove] = null!;

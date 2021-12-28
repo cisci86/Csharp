@@ -4,8 +4,8 @@ namespace Exercise_5
 {
     public class Manager
     {
-        UI uI;
-        GarageHandler garageHandler;
+        IUI uI;
+        IGarageHandler garageHandler;
         bool garageCreated = false;
         public Manager()
         {
@@ -40,7 +40,6 @@ namespace Exercise_5
                     break;
                 case 2:
                     garageHandler.GetDummieData();
-                    //garageHandler.Serilize();
                     break;
                 case 3:
                     Console.Clear();
