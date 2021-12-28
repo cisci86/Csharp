@@ -39,30 +39,72 @@ namespace Exercise_5
                     }
                     break;
                 case 2:
+                    if (garageCreated == false)
+                    {
+                        uI.PrintMessage("You need to create a garage before you continue!");
+                        Exit();
+                        break;
+                    }
                     garageHandler.GetDummieData();
                     break;
                 case 3:
                     Console.Clear();
+                    if (garageCreated == false)
+                    {
+                        uI.PrintMessage("You need to create a garage before you continue!");
+                        Exit();
+                        break;
+                    }
                     ParkVehicle();
                     break;
                 case 4:
                     Console.Clear();
+                    if (garageCreated == false)
+                    {
+                        uI.PrintMessage("You need to create a garage before you continue!");
+                        Exit();
+                        break;
+                    }
                     CollectVehicel();
                     break;
                 case 5:
                     Console.Clear();
+                    if (garageCreated == false)
+                    {
+                        uI.PrintMessage("You need to create a garage before you continue!");
+                        Exit();
+                        break;
+                    }
                     ShowAllParkedVehicles();
                     break;
                 case 6:
                     Console.Clear();
+                    if (garageCreated == false)
+                    {
+                        uI.PrintMessage("You need to create a garage before you continue!");
+                        Exit();
+                        break;
+                    }
                     ShowVehicleByType();
                     break;
                 case 7:
                     Console.Clear();
+                    if (garageCreated == false)
+                    {
+                        uI.PrintMessage("You need to create a garage before you continue!");
+                        Exit();
+                        break;
+                    }
                     SearchVehicleByLicensePlate();
                     break;
                 case 8:
                     Console.Clear();
+                    if (garageCreated == false)
+                    {
+                        uI.PrintMessage("You need to create a garage before you continue!");
+                        Exit();
+                        break;
+                    }
                     SearchVehicle();
                     break;
                 case 0:
