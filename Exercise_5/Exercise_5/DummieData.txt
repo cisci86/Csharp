@@ -1,0 +1,6 @@
+{"Vehicle Type":"Car","RegNumber":"ABC123","Color":"Red","Number Of Wheels":"4","Fuel Type":"Gasoline"}
+{"Vehicle Type":"Car","RegNumber":"ABT173","Color":"Blue","Number Of Wheels":"4","Fuel Type":"Disel"}
+{"Vehicle Type":"Motorcycle","RegNumber":"KLO123","Color":"White","Number Of Wheels":"2","Cylinder Volume":"23"}
+{"Vehicle Type":"Boat","RegNumber":"PCE987","Color":"Dark_Blue","Number Of Wheels":"0","Lenght":"13"}
+{"Vehicle Type":"Boat","RegNumber":"KLA907","Color":"Green","Number Of Wheels":"0","Lenght":"8"}
+{"Vehicle Type":"Bus","RegNumber":"DWQ365","Color":"Light_Green","Number Of Wheels":"8","Number Of Seats":"45"}
