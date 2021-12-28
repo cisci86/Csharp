@@ -8,7 +8,7 @@ namespace Exercise_5.Vehicles
 {
     internal class Airplane : Vehicle
     {
-        public Airplane(string regNumber, Enum color, int numberOfWheels, int numberOfEngines) : base(regNumber, color, numberOfWheels)
+        public Airplane(string regNumber, Color color, int numberOfWheels, int numberOfEngines) : base(regNumber, color, numberOfWheels)
         {
             NumberOfEngines = numberOfEngines;
         }

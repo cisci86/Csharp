@@ -24,11 +24,15 @@ namespace Exercise_5
         //public void Serilize()
         //{
         //    JsonSerializer jsonSerializer = new JsonSerializer();
-            
+        //    var jsonSerializerSettings = new JsonSerializerSettings()
+        //    {
+        //        TypeNameHandling = TypeNameHandling.All
+        //    };
+
         //    StreamWriter sw = new StreamWriter("..\\RecipeBook.txt");
         //    foreach (Vehicle vehicle in garage.GetArray())
         //    {
-        //        string serializedRecipe = JsonConvert.SerializeObject(vehicle);
+        //        string serializedRecipe = JsonConvert.SerializeObject(vehicle, jsonSerializerSettings);
         //        sw.WriteLine(serializedRecipe);
         //    }
         //    sw.Close();
@@ -40,7 +44,10 @@ namespace Exercise_5
 
             while (line != null)
             {
-                Vehicle vehicle = JsonConvert.DeserializeObject<Vehicle>(line);
+                Vehicle vehicle = JsonConvert.DeserializeObject<Vehicle>(line, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto
+                });
                 garage.AddVehicle(vehicle);
                 line = sr.ReadLine();
             }

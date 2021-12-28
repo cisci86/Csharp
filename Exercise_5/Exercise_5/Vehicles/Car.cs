@@ -8,7 +8,7 @@ namespace Exercise_5.Vehicles
 {
     internal class Car : Vehicle
     {
-        public Car(string regNumber, Enum color, int numberOfWheels, string fueltype) : base(regNumber, color, numberOfWheels)
+        public Car(string regNumber, Color color, int numberOfWheels, string fueltype) : base(regNumber, color, numberOfWheels)
         {
             Fueltype = fueltype;
         }

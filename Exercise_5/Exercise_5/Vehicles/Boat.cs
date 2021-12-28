@@ -8,7 +8,7 @@ namespace Exercise_5.Vehicles
 {
     internal class Boat : Vehicle
     {
-        public Boat(string regNumber, Enum color, int numberOfWheels, int lenght) : base(regNumber, color, numberOfWheels)
+        public Boat(string regNumber, Color color, int numberOfWheels, int lenght) : base(regNumber, color, numberOfWheels)
         {
             Lenght = lenght;
         }

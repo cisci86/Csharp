@@ -9,12 +9,12 @@ namespace Garage.Test
         public void AddVehicle_AddedToSlotIsTrue()
         {
             //Arrange
-            Garage<string> garage = new Garage<string>(5);
+            Garage<Vehicle> garage = new Garage<Vehicle>(5);
             bool added = false;
             var expected = true;
 
             //Act
-            added = garage.AddVehicle("Hej hopp");
+            //added = garage.AddVehicle();
 
             //Assert
             Assert.Equal(expected, added);

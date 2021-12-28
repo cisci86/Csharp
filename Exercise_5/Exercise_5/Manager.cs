@@ -40,6 +40,7 @@ namespace Exercise_5
                     break;
                 case 2:
                     garageHandler.GetDummieData();
+                    //garageHandler.Serilize();
                     break;
                 case 3:
                     Console.Clear();
@@ -102,6 +103,7 @@ namespace Exercise_5
             if (garageHandler.IsFull())
             {
                 uI.PrintMessage("Sorry the garage is full");
+                Exit();
                 return;
             }
             if (garageHandler.ParkVehicle(VehicleChoice()))
@@ -135,7 +137,7 @@ namespace Exercise_5
                 if (colorNr >= 14)
                     uI.PrintMessage("Please enter a number from the list!");
             } while (colorNr >= 14);
-            Enum color = (Color)colorNr - 1;
+            Color color = (Color)colorNr - 1;
 
 
             uI.PrintMessage("Number of wheels:");
