@@ -21,7 +21,6 @@ namespace Exercise_5
         {
             return garage.IsEmpty();
         }
-
         public void GetDummieData()
         {
             StreamReader sr = new StreamReader("..\\DummieData.txt");
@@ -31,6 +30,7 @@ namespace Exercise_5
             {
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 Vehicle vehicle = JsonConvert.DeserializeObject<Vehicle>(line, new JsonSerializerSettings
+                //TODO: Add SeralizerBinding to mitigate insecure deserialization
                 {
                     TypeNameHandling = TypeNameHandling.Auto
                 });
