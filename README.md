@@ -1,2 +1,3 @@
 "# Csharp" 
-The course exersices for the C# cours via Lexicon
+The 1-st module i the education via Lexicon
+The exersices for the C# beginners course.
